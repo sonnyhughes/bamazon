@@ -1,4 +1,4 @@
-# Bamazon the app
+# Bamazon
 
 The app takes pastry shop orders from customers and allows admins to manager their cafe's inventory.
 
