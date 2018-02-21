@@ -15,6 +15,65 @@ var connection = mysql.createConnection({
 
 
 //FUNCTIONS
+// function showItems() {
+//     //SHOW ME ALL IDs, NAMES, AND PRODUCTS FROM BAMAZON
+//     connection.query('SELECT * FROM Products', function (error, response) {
+//         if (error) { console.log(error) };
+//         //NEW INSTANCE OF CONSTRUCTOR
+//         var theDisplayTable = new Table({
+//             //DECLARE VALUE CATEGORIES
+//             head: ['Item ID', 'Product Name', 'Category', 'Price', 'Quantity'],
+//             //SET COLUMN WIDTH TO SCALE
+//             colWidths: [10, 30, 18, 10, 14]
+//         });
+//         //LOOP THROUGH EACH ROW
+//         for (i = 0; i < response.length; i++) {
+//             //PUSH RECORD DATA TO TABLE
+//             theDisplayTable.push(
+//                 [response[i].ItemID, response[i].MenuItem, response[i].Category, response[i].Price, response[i].Inventory]
+//             );
+//         }
+//         //CONSOLE LOG NEW TABLE
+//         console.log(theDisplayTable.toString());
+//         //ASK FOR UPDATES 
+//         manageInventory();
+//     });
+// };
+
+function manageInventory() {
+    //FETCH MANAGEMENT OPTION FROM CHOICES
+    inquirer.prompt([{
+        name: "action",
+        type: "list",
+        message: "Please choose an inventory action below:",
+        choices: ["View Products for Sale", "View Low Inventory", "Add to Inventory", "Add New Product", "Remove Item from Stock"]
+    }]).then(function (answers) {
+        //USER PICKS A MANAGEMENT OPTION FROM THE MENU
+        switch (answers.action) {
+
+            case 'View Products for Sale':
+                showItems();
+                break;
+            
+            case 'View Low Inventory':
+                showLowStock();
+                break;
+
+            case 'Add to Inventory':
+                restockItem();
+                break;
+
+            case 'Add New Product':
+                addItem();
+                break;
+
+            case 'Remove Item from Stock':
+                removeItem();
+                break;
+        }
+    });
+};
+
 function showItems() {
     //SHOW ME ALL IDs, NAMES, AND PRODUCTS FROM BAMAZON
     connection.query('SELECT * FROM Products', function (error, response) {
@@ -40,31 +99,31 @@ function showItems() {
     });
 };
 
-function manageInventory() {
-    //FETCH MANAGEMENT OPTION FROM CHOICES
-    inquirer.prompt([{
-        name: "action",
-        type: "list",
-        message: "Please choose an inventory action below:",
-        choices: ["Restock Item", "Add new item to stock", "Remove item from stock"]
-    }]).then(function (answers) {
-        //USER PICKS A MANAGEMENT OPTION FROM THE MENU
-        switch (answers.action) {
-
-            case 'Restock Item':
-                restockItem();
-                break;
-
-            case 'Add new item to stock':
-                addItem();
-                break;
-
-            case 'Remove item from stock':
-                removeItem();
-                break;
+function showLowStock() {
+    //SHOW ME ALL IDs, NAMES, AND PRODUCTS FROM BAMAZON
+    connection.query('SELECT * FROM products WHERE Inventory < 200', function (error, response) {
+        if (error) { console.log(error) };
+        //NEW INSTANCE OF CONSTRUCTOR
+        var theDisplayTable = new Table({
+            //DECLARE VALUE CATEGORIES
+            head: ['Item ID', 'Product Name', 'Category', 'Price', 'Quantity'],
+            //SET COLUMN WIDTH TO SCALE
+            colWidths: [10, 30, 18, 10, 14]
+        });
+        //LOOP THROUGH EACH ROW
+        for (i = 0; i < response.length; i++) {
+            //PUSH RECORD DATA TO TABLE
+            theDisplayTable.push(
+                [response[i].ItemID, response[i].MenuItem, response[i].Category, response[i].Price, response[i].Inventory]
+            );
         }
+        //CONSOLE LOG NEW TABLE
+        console.log(theDisplayTable.toString());
+        //ASK FOR UPDATES 
+        manageInventory();
     });
 };
+
 
 
 
@@ -167,4 +226,4 @@ function removeDatabaseItem(id) {
     showItems();
 };
 
-showItems();
+manageInventory();

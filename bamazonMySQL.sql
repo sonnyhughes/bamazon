@@ -13,8 +13,8 @@ CREATE TABLE Products(
 );
 
 -- CREATE NEW PRODUCTS
-INSERT INTO Products(MenuItem,Category,Price,Inventory) VALUES('Chocolate Chip Cookies','Food',2.99,600);
+INSERT INTO Products(MenuItem,Category,Price,Inventory) VALUES('Chocolate Chip Cookies','Food',2.99,60);
 INSERT INTO Products(MenuItem,Category,Price,Inventory) VALUES('Croquembouche','Food',100.00,50);
-INSERT INTO Products(MenuItem,Category,Price,Inventory) VALUES('Caramel Tart','Food',24.99,300);
-INSERT INTO Products(MenuItem,Category,Price,Inventory) VALUES('Cafe Latte','Drink',5.99,350);
-INSERT INTO Products(MenuItem,Category,Price,Inventory) VALUES('Hot Chocolate','Drink',5.99,200);
+INSERT INTO Products(MenuItem,Category,Price,Inventory) VALUES('Caramel Tart','Food',24.99,30);
+INSERT INTO Products(MenuItem,Category,Price,Inventory) VALUES('Cafe Latte','Drink',5.99,35);
+INSERT INTO Products(MenuItem,Category,Price,Inventory) VALUES('Hot Chocolate','Drink',5.99,20);

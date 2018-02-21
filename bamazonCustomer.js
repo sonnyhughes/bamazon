@@ -69,7 +69,7 @@ function grabDatabaseItem(ID, quantityNeeded) {
         //IF ITEM IS IN STOCK...
         if (quantityNeeded <= response[0].Inventory) {
             //CALCULATE PRICE
-            var totalCost = response[0].Price * quantityNeeded;
+            var totalCost = response[0].Price.toPrecision(4) * quantityNeeded;
             //PROVIDE USER FEEDBACK
             console.log(`Your ${response[0].MenuItem} item is available! Your order will be ready shortly!`);
             console.log(`Your check for ${quantityNeeded} orders of ${response[0].MenuItem} is ${totalCost}. Thank you for dining with us!`);
