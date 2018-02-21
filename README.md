@@ -51,26 +51,26 @@ List a set of menu options:
 
 #### View Products for Sale
 ![alt tag](/assets/BamazonManagerViewStock.png)
-If a manager selects `View Products for Sale`, the app should list every available item: the item IDs, names, prices, and quantities.
+* If a manager selects `View Products for Sale`, the app should list every available item: the item IDs, names, prices, and quantities.
 
 
 #### View Low Inventory
 ![alt tag](/assets/BamazonManagerViewLow.png)
-If a manager selects `View Low Inventory`, then it should list all items with an inventory count lower than five.
+* If a manager selects `View Low Inventory`, then it should list all items with an inventory count lower than five.
 
 
 #### Add to Inventory
 ![alt tag](/assets/BamazonManagerRestock.png)
-If a manager selects `Add to Inventory`, your app should display a prompt that will let the manager "add more" of any item currently on the menu.
+* If a manager selects `Add to Inventory`, your app should display a prompt that will let the manager "add more" of any item currently on the menu.
 
 
 #### Add New Product
 ![alt tag](/assets/BamazonManagerAdd.png)
-If a manager selects `Add New Product`, it should allow the manager to add a completely new product to the menu.
+* If a manager selects `Add New Product`, it should allow the manager to add a completely new product to the menu.
 
 
 #### Remove Item From Stock
 ![alt tag](/assets/BamazonManagerRemove.png)
-If a manager selects `Remove Item From Stock`, it should allow the manager to remove a product from the menu.
+* If a manager selects `Remove Item From Stock`, it should allow the manager to remove a product from the menu.
 
 
