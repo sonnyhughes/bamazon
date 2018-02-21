@@ -35,7 +35,7 @@ function showItems() {
         }
         //CONSOLE LOG NEW TABLE
         console.log(theDisplayTable.toString());
-        //ASK FOR ANOTHER 
+        //ASK FOR A NEW ORDER 
         takeNewOrder();
     });
 };
@@ -47,11 +47,11 @@ function takeNewOrder() {
         {
             name: "ID",
             type: "input",
-            message: "Please enter item number:"
+            message: "Please enter item number: "
         }, {
             name: 'Quantity',
             type: 'input',
-            message: "How many would you like?"
+            message: "How many would you like? "
         },
         //SAVE INPUT AS VARIABLES, PASS VARIABLES AS ARGUMENTS TO grabDatabaseItem() FUNCTION
     ]).then(function (answers) {
@@ -72,7 +72,7 @@ function grabDatabaseItem(ID, quantityNeeded) {
             var totalCost = response[0].Price * quantityNeeded;
             //PROVIDE USER FEEDBACK
             console.log(`Your ${response[0].MenuItem} item is available! Your order will be ready shortly!`);
-            console.log(`Your total cost for ${quantityNeeded} orders of ${response[0].MenuItem} is ${totalCost}. Thank you for your Business!`);
+            console.log(`Your check for ${quantityNeeded} orders of ${response[0].MenuItem} is ${totalCost}. Thank you for dining with us!`);
             //UPDATE DATABASE AND DEDUCT ONE FROM ITEM INVENTORY OR RESPONSE WITH OUT OF STOCK
             connection.query('UPDATE Products SET Inventory = Inventory - ' + quantityNeeded + ' WHERE ItemID = ' + ID);
         } else {
